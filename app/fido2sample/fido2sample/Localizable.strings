@@ -1,0 +1,82 @@
+/* 
+  Localizable.strings
+  fido2sample
+  
+*/
+
+// MARK: Common
+
+"alert_error_title" = "Error";
+"alert_ok" = "OK";
+"alert_cancel" = "Cancel";
+
+// MARK: Register
+
+"register_button_title" = "Register";
+"register_alert_title" = "Registration";
+"register_alert_message" = "You have been registered successfully.";
+"register_input_alert_title" = "Enter Username";
+"register_input_alert_message" = "Please input a username";
+
+// MARK: Authenticate
+
+"authenticate_button_title" = "Authenticate";
+"authenticate_alert_title" = "Authentication";
+"authenticate_alert_message" = "You have been authenticated successfully.";
+"authenticate_alert_message_no_registration" = "No authenticators registered.";
+
+// MARK: TabBar
+
+"home_tabbar_title" = "Home";
+"Settings_tabbar_title" = "Settings";
+
+
+// MARK: Change PIN
+
+"changepin_alert_title" = "Change PIN";
+"changepin_alert_message" = "Your PIN has been updated.";
+
+
+// MARK: View title
+
+"home_title" = "FIDO2 Sample";
+"settings_title" = "Settings";
+"tabbar_home_title" = "Home";
+"tabbar_settings_title" = "Settings";
+"RegisteredAuthenticators_title" = "Registered Authenticators";
+"navbar_showlogs_title" = "Show Logs";
+"navbar_hidelogs_title" = "Hide Logs";
+
+
+// MARK: Settings Page
+
+"registeredAuthenticators_section_title" = "Authenticators";
+"passcodeManagement_section_title" = "Passcode Management";
+"sdk_section_title" = "SDK";
+
+"registeredAuthenticators_cell_title" = "Registered Authenticators";
+"createPasscode_cell_title" = "Create Passcode";
+"changePasscode_cell_title" = "Change Passcode";
+"deletePasscode_cell_title" = "Delete Passcode";
+"disableScramble_cell_title" = "Disable Scramble";
+"minPasscodeLength_cell_title" = "Min Passcode Length";
+"maxPasscodeLength_cell_title" = "Max Passcode Length";
+"maxRetryCount_cell_title" = "Max Retry Count";
+"baseLockoutDuration_cell_title" = "Base Lockout Duration";
+"shareSecureLogs_cell_title" = "Share Secure Logs";
+"reset_cell_title" = "Reset";
+
+"minPasscodeLength_subtitle" = "The default value is 6.";
+"maxPasscodeLength_subtitle" = "The default value is 8.";
+"maxRetryCount_subtitle" = "The default value is 5.";
+"baseLockoutDuration_subtitle" = "The default value is 30s.";
+
+// MARK: Settings Page - Registered Authenticators
+
+"edit_button_title" = "Edit";
+"cancel_button_title" = "Cancel";
+
+// MARK: Settings Page - Reset
+
+"alert_reset" = "Reset";
+"reset_alert_message" = "Do you want to reset?";

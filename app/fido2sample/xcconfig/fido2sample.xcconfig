@@ -1,0 +1,41 @@
+//
+//  fido2sample.xcconfig
+//  fido2sample
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "../Pods/Target Support Files/Pods-fido2sample/Pods-fido2sample.release.xcconfig"
+        
+// FIDO2 SDK does not support bitcode
+ENABLE_BITCODE = NO
+
+// FIDO2 SDK minimum iOS is 11.0
+IPHONEOS_DEPLOYMENT_TARGET = 11.0
+
+// The following search paths is based on this folder structure. 
+// Please modify accordingly if the structure is different.
+//    ├── app
+//    │   └── fido2sample
+//    └── lib
+//        ├── fido2
+//        │   ├── debug
+//        │   │   ├── fido2
+//        │   │   └── fido2.xcframework
+//        │   └── release
+//        │       ├── fido2
+//        │       └── fido2.xcframework
+//        └── fido2ui
+//            ├── fido2ui
+//            └── fido2ui.xcodeproj
+
+DEAD_CODE_STRIPPING = YES
+DEPLOYMENT_POSTPROCESSING = YES
+GCC_GENERATE_DEBUGGING_SYMBOLS = NO
+STRIP_INSTALLED_PRODUCT = YES
+STRIP_STYLE = all
+COPY_PHASE_STRIP = YES
+
+OTHER_LDFLAGS = $(inherited) -lfido2
+LIB_ROOT = $(PROJECT_DIR)/../../lib

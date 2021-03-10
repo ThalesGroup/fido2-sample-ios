@@ -1,0 +1,490 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A10D49F325DCF2E2007B36F1 /* fido2sample.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = A10D49F125DCF2E2007B36F1 /* fido2sample.xcconfig */; };
+		A10D4A1C25DCF798007B36F1 /* libfido2ui.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A10D4A1B25DCF798007B36F1 /* libfido2ui.a */; };
+		A11463E125DF542C00CE65CB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11463E025DF542C00CE65CB /* Logger.swift */; };
+		A1C82A8C25DD095A00345D3C /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82A8A25DD095A00345D3C /* Configuration.swift */; };
+		A1C82A8D25DD095A00345D3C /* SecureLogArchive.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82A8B25DD095A00345D3C /* SecureLogArchive.swift */; };
+		A1C82AC825DD14B600345D3C /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82AC625DD14B600345D3C /* Authentication.swift */; };
+		A1C82AC925DD14B600345D3C /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82AC725DD14B600345D3C /* Registration.swift */; };
+		A1C82AE825DE172A00345D3C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82AE725DE172A00345D3C /* HomeViewController.swift */; };
+		A1C82AF825DE194900345D3C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1C82AF725DE194900345D3C /* Localizable.strings */; };
+		A1C82B0025DE1E4700345D3C /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82AFF25DE1E4700345D3C /* SettingsViewController.swift */; };
+		A1C82B8F25DE695700345D3C /* AuthenticatorRegistrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82B8E25DE695700345D3C /* AuthenticatorRegistrationsViewController.swift */; };
+		A1C82B9725DE830E00345D3C /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82B9625DE830E00345D3C /* Base64.swift */; };
+		A1E747D925DCC91700DF2EC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E747D825DCC91700DF2EC8 /* AppDelegate.swift */; };
+		A1E747E225DCC91A00DF2EC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1E747E125DCC91A00DF2EC8 /* Assets.xcassets */; };
+		FB51C205EB79A65D5E6DD1ED /* Pods_fido2sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE6EEECD1F38FE7BD1BD8C5 /* Pods_fido2sample.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		171390409C47C2447E7A1F09 /* Pods-fido2sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fido2sample.release.xcconfig"; path = "Target Support Files/Pods-fido2sample/Pods-fido2sample.release.xcconfig"; sourceTree = "<group>"; };
+		9FE6EEECD1F38FE7BD1BD8C5 /* Pods_fido2sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_fido2sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A10D49F125DCF2E2007B36F1 /* fido2sample.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = fido2sample.xcconfig; sourceTree = "<group>"; };
+		A10D4A1B25DCF798007B36F1 /* libfido2ui.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libfido2ui.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11463E025DF542C00CE65CB /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		A1C82A8A25DD095A00345D3C /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		A1C82A8B25DD095A00345D3C /* SecureLogArchive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecureLogArchive.swift; sourceTree = "<group>"; };
+		A1C82AC625DD14B600345D3C /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		A1C82AC725DD14B600345D3C /* Registration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
+		A1C82AE725DE172A00345D3C /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A1C82AF725DE194900345D3C /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		A1C82AFF25DE1E4700345D3C /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A1C82B8E25DE695700345D3C /* AuthenticatorRegistrationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticatorRegistrationsViewController.swift; sourceTree = "<group>"; };
+		A1C82B9625DE830E00345D3C /* Base64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base64.swift; sourceTree = "<group>"; };
+		A1E747D525DCC91700DF2EC8 /* fido2sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fido2sample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1E747D825DCC91700DF2EC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1E747E125DCC91A00DF2EC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A1E747E925DCC91A00DF2EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2AC04BF63C3EDDB59D28F7C /* Pods-fido2sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fido2sample.debug.xcconfig"; path = "Target Support Files/Pods-fido2sample/Pods-fido2sample.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1E747D225DCC91700DF2EC8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10D4A1C25DCF798007B36F1 /* libfido2ui.a in Frameworks */,
+				FB51C205EB79A65D5E6DD1ED /* Pods_fido2sample.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3FC5BD9EADB97599384F3F22 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A10D4A1B25DCF798007B36F1 /* libfido2ui.a */,
+				9FE6EEECD1F38FE7BD1BD8C5 /* Pods_fido2sample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A10D49EF25DCF2CF007B36F1 /* xcconfig */ = {
+			isa = PBXGroup;
+			children = (
+				A10D49F125DCF2E2007B36F1 /* fido2sample.xcconfig */,
+			);
+			path = xcconfig;
+			sourceTree = "<group>";
+		};
+		A1C82AC425DD149900345D3C /* fido2 */ = {
+			isa = PBXGroup;
+			children = (
+				A1C82AC725DD14B600345D3C /* Registration.swift */,
+				A1C82AC625DD14B600345D3C /* Authentication.swift */,
+			);
+			path = fido2;
+			sourceTree = "<group>";
+		};
+		A1C82AC525DD14A000345D3C /* vc */ = {
+			isa = PBXGroup;
+			children = (
+				A1C82B8E25DE695700345D3C /* AuthenticatorRegistrationsViewController.swift */,
+				A1C82AFF25DE1E4700345D3C /* SettingsViewController.swift */,
+				A1C82AE725DE172A00345D3C /* HomeViewController.swift */,
+			);
+			path = vc;
+			sourceTree = "<group>";
+		};
+		A1C82B9525DE82D500345D3C /* util */ = {
+			isa = PBXGroup;
+			children = (
+				A11463E025DF542C00CE65CB /* Logger.swift */,
+				A1C82B9625DE830E00345D3C /* Base64.swift */,
+			);
+			path = util;
+			sourceTree = "<group>";
+		};
+		A1E747CC25DCC91700DF2EC8 = {
+			isa = PBXGroup;
+			children = (
+				A10D49EF25DCF2CF007B36F1 /* xcconfig */,
+				A1E747D725DCC91700DF2EC8 /* fido2sample */,
+				A1E747D625DCC91700DF2EC8 /* Products */,
+				BB79152040B05FCC9FFACF26 /* Pods */,
+				3FC5BD9EADB97599384F3F22 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A1E747D625DCC91700DF2EC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1E747D525DCC91700DF2EC8 /* fido2sample.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1E747D725DCC91700DF2EC8 /* fido2sample */ = {
+			isa = PBXGroup;
+			children = (
+				A1C82AF725DE194900345D3C /* Localizable.strings */,
+				A1C82AC525DD14A000345D3C /* vc */,
+				A1C82AC425DD149900345D3C /* fido2 */,
+				A1C82B9525DE82D500345D3C /* util */,
+				A1C82A8A25DD095A00345D3C /* Configuration.swift */,
+				A1C82A8B25DD095A00345D3C /* SecureLogArchive.swift */,
+				A1E747D825DCC91700DF2EC8 /* AppDelegate.swift */,
+				A1E747E125DCC91A00DF2EC8 /* Assets.xcassets */,
+				A1E747E925DCC91A00DF2EC8 /* Info.plist */,
+			);
+			path = fido2sample;
+			sourceTree = "<group>";
+		};
+		BB79152040B05FCC9FFACF26 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F2AC04BF63C3EDDB59D28F7C /* Pods-fido2sample.debug.xcconfig */,
+				171390409C47C2447E7A1F09 /* Pods-fido2sample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1E747D425DCC91700DF2EC8 /* fido2sample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1E7480225DCC91A00DF2EC8 /* Build configuration list for PBXNativeTarget "fido2sample" */;
+			buildPhases = (
+				67348C604142CDED7538F52D /* [CP] Check Pods Manifest.lock */,
+				A17D7D9B25DCFED10056B2C7 /* [FIDO2] Copy Artifacts */,
+				A1E747D125DCC91700DF2EC8 /* Sources */,
+				A1E747D225DCC91700DF2EC8 /* Frameworks */,
+				A1E747D325DCC91700DF2EC8 /* Resources */,
+				DF1A3D7EA3974D79E20726A8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = fido2sample;
+			productName = fido2sample;
+			productReference = A1E747D525DCC91700DF2EC8 /* fido2sample.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1E747CD25DCC91700DF2EC8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1230;
+				LastUpgradeCheck = 1230;
+				TargetAttributes = {
+					A1E747D425DCC91700DF2EC8 = {
+						CreatedOnToolsVersion = 12.3;
+					};
+				};
+			};
+			buildConfigurationList = A1E747D025DCC91700DF2EC8 /* Build configuration list for PBXProject "fido2sample" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1E747CC25DCC91700DF2EC8;
+			productRefGroup = A1E747D625DCC91700DF2EC8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1E747D425DCC91700DF2EC8 /* fido2sample */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1E747D325DCC91700DF2EC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10D49F325DCF2E2007B36F1 /* fido2sample.xcconfig in Resources */,
+				A1C82AF825DE194900345D3C /* Localizable.strings in Resources */,
+				A1E747E225DCC91A00DF2EC8 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		67348C604142CDED7538F52D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fido2sample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A17D7D9B25DCFED10056B2C7 /* [FIDO2] Copy Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[FIDO2] Copy Artifacts";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./copy_artifacts.sh\n";
+		};
+		DF1A3D7EA3974D79E20726A8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fido2sample/Pods-fido2sample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-fido2sample/Pods-fido2sample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-fido2sample/Pods-fido2sample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1E747D125DCC91700DF2EC8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A1C82A8D25DD095A00345D3C /* SecureLogArchive.swift in Sources */,
+				A1C82A8C25DD095A00345D3C /* Configuration.swift in Sources */,
+				A1C82B0025DE1E4700345D3C /* SettingsViewController.swift in Sources */,
+				A1E747D925DCC91700DF2EC8 /* AppDelegate.swift in Sources */,
+				A1C82AE825DE172A00345D3C /* HomeViewController.swift in Sources */,
+				A1C82B8F25DE695700345D3C /* AuthenticatorRegistrationsViewController.swift in Sources */,
+				A1C82AC825DD14B600345D3C /* Authentication.swift in Sources */,
+				A11463E125DF542C00CE65CB /* Logger.swift in Sources */,
+				A1C82B9725DE830E00345D3C /* Base64.swift in Sources */,
+				A1C82AC925DD14B600345D3C /* Registration.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1E7480025DCC91A00DF2EC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1E7480125DCC91A00DF2EC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A1E7480325DCC91A00DF2EC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A10D49F125DCF2E2007B36F1 /* fido2sample.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = LMY4YJ949Q;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = fido2sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thalesgroup.gemalto.fido2.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A1E7480425DCC91A00DF2EC8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A10D49F125DCF2E2007B36F1 /* fido2sample.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = LMY4YJ949Q;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = fido2sample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.thalesgroup.gemalto.fido2.sample;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "FIDO SDK Sample - Distribution";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1E747D025DCC91700DF2EC8 /* Build configuration list for PBXProject "fido2sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1E7480025DCC91A00DF2EC8 /* Debug */,
+				A1E7480125DCC91A00DF2EC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1E7480225DCC91A00DF2EC8 /* Build configuration list for PBXNativeTarget "fido2sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1E7480325DCC91A00DF2EC8 /* Debug */,
+				A1E7480425DCC91A00DF2EC8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A1E747CD25DCC91700DF2EC8 /* Project object */;
+}
