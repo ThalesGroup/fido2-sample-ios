@@ -12,7 +12,7 @@
 ENABLE_BITCODE = NO
 
 // FIDO2 SDK minimum iOS is 11.0
-IPHONEOS_DEPLOYMENT_TARGET = 11.0
+IPHONEOS_DEPLOYMENT_TARGET = 15.0
 
 // The following search paths is based on this folder structure. 
 // Please modify accordingly if the structure is different.
@@ -37,5 +37,5 @@ STRIP_INSTALLED_PRODUCT = YES
 STRIP_STYLE = all
 COPY_PHASE_STRIP = YES
 
-OTHER_LDFLAGS = $(inherited) -lfido2
+OTHER_LDFLAGS = $(inherited) -framework fido2
 LIB_ROOT = $(PROJECT_DIR)/../../lib

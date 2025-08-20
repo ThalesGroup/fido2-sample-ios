@@ -94,7 +94,7 @@ class HomeViewController: UIViewController {
         textView.text = nil
         
         // Show Alert if no authenticators registered.
-        let registeredAuthenticatorsInfos: [TGFFido2AuthenticatorRegistrationInfo] = TGFFido2ClientFactory.client().authenticatorRegistrations()
+        let registeredAuthenticatorsInfos: [TGFFido2AuthenticatorRegistrationInfo] = try! TGFFido2ClientFactory.client().authenticatorRegistrations()
         if registeredAuthenticatorsInfos.isEmpty {
             self.showAlert(withTitle: NSLocalizedString("alert_error_title", comment: ""), message: NSLocalizedString("authenticate_alert_message_no_registration", comment: ""), okAction: nil)
             return

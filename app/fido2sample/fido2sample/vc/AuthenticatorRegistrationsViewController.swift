@@ -37,7 +37,7 @@ class AuthenticatorRegistrationsViewController: UIViewController {
     // MARK: SelectableUi
 
     func reloadData() {
-        self.authenticatorRegistrationInfos = TGFFido2ClientFactory.client().authenticatorRegistrations()
+        self.authenticatorRegistrationInfos = try! TGFFido2ClientFactory.client().authenticatorRegistrations()
         self.tableView.reloadData()
     }
     
@@ -116,11 +116,14 @@ extension AuthenticatorRegistrationsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Execute remove registered authenticator and row deletion
-            let authInfo = authenticatorRegistrationInfos[indexPath.row]
-            let client = TGFFido2ClientFactory.client()
-            client.deleteAuthenticatorRegistration(authInfo)
-            authInfo.wipe()
-            
+            do {
+                let authInfo = authenticatorRegistrationInfos[indexPath.row]
+                let client = try? TGFFido2ClientFactory.client()
+                try client?.deleteAuthenticatorRegistration(authInfo)
+                authInfo.wipe()
+            } catch let error {
+                
+            }
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
                 self?.tableView.setEditing(false, animated: true)
                 self?.toggleRightBarButton(isEdit: true)
@@ -152,7 +155,7 @@ extension AuthenticatorRegistrationsViewController: UITableViewDataSource {
         
         var image: UIImage
         switch authInfo.verifyMethod {
-        case .proprietaryBiometric:
+        case .biometric:
             let context = LAContext()
             let canEvaluate = context.canEvaluatePolicy(.deviceOwnerAuthentication, error: nil)
             if canEvaluate {

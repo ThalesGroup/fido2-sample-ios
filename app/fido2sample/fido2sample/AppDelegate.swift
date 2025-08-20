@@ -17,12 +17,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Configure RASP, to crash app in case of hook/debugger/jailbreak detected.
-#if DEBUG
-        TGFRaspUiConfigure(TGF_RASP_TYPE_DEBUGGER ,TGF_RASP_MODE_DISABLE)
-        TGFRaspUiConfigure(TGF_RASP_TYPE_HOOK | TGF_RASP_TYPE_JAILBREAK ,TGF_RASP_MODE_CRASH)
-#else
-        TGFRaspUiConfigure(TGF_RASP_TYPE_DEBUGGER | TGF_RASP_TYPE_HOOK | TGF_RASP_TYPE_JAILBREAK,TGF_RASP_MODE_CRASH)
-#endif
+//#if DEBUG
+//        TGFRaspUiConfigure(TGF_RASP_TYPE_DEBUGGER ,TGF_RASP_MODE_DISABLE)
+//        TGFRaspUiConfigure(TGF_RASP_TYPE_HOOK | TGF_RASP_TYPE_JAILBREAK ,TGF_RASP_MODE_CRASH)
+//#else
+//        TGFRaspUiConfigure(TGF_RASP_TYPE_DEBUGGER | TGF_RASP_TYPE_HOOK | TGF_RASP_TYPE_JAILBREAK,TGF_RASP_MODE_CRASH)
+//#endif
         
         //Initialise SecureLog, to log necessary retrievable information.
         initializeSecureLog()

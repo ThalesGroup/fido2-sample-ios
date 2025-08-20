@@ -14,7 +14,7 @@ class Authentication: NSObject {
     private let clientConformer: ClientConformer
     
     // Set up an instance variable of FIDO2 client
-    private let fido2Client =  TGFFido2ClientFactory.client()
+    private let fido2Client = try? TGFFido2ClientFactory.client()
     
     init( clientConformer: ClientConformer) {
         self.clientConformer = clientConformer

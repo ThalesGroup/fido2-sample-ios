@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,8 +21,27 @@
 		A1C82B9725DE830E00345D3C /* Base64.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1C82B9625DE830E00345D3C /* Base64.swift */; };
 		A1E747D925DCC91700DF2EC8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E747D825DCC91700DF2EC8 /* AppDelegate.swift */; };
 		A1E747E225DCC91A00DF2EC8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1E747E125DCC91A00DF2EC8 /* Assets.xcassets */; };
+		BCB4DE922E55CEA400AB9F1E /* fido2.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4DE912E55CEA400AB9F1E /* fido2.xcframework */; };
+		BCB4DE932E55CEA400AB9F1E /* fido2.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4DE912E55CEA400AB9F1E /* fido2.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BCB4DE962E55D0E500AB9F1E /* SecureLogAPI.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4DE952E55D0E500AB9F1E /* SecureLogAPI.xcframework */; };
+		BCB4DE972E55D0E500AB9F1E /* SecureLogAPI.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BCB4DE952E55D0E500AB9F1E /* SecureLogAPI.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FB51C205EB79A65D5E6DD1ED /* Pods_fido2sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE6EEECD1F38FE7BD1BD8C5 /* Pods_fido2sample.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BCB4DE942E55CEA400AB9F1E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BCB4DE972E55D0E500AB9F1E /* SecureLogAPI.xcframework in Embed Frameworks */,
+				BCB4DE932E55CEA400AB9F1E /* fido2.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		171390409C47C2447E7A1F09 /* Pods-fido2sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fido2sample.release.xcconfig"; path = "Target Support Files/Pods-fido2sample/Pods-fido2sample.release.xcconfig"; sourceTree = "<group>"; };
@@ -43,6 +62,8 @@
 		A1E747D825DCC91700DF2EC8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A1E747E125DCC91A00DF2EC8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1E747E925DCC91A00DF2EC8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCB4DE912E55CEA400AB9F1E /* fido2.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2T9J7M62ML:Thales DIS France SAS"; lastKnownFileType = wrapper.xcframework; name = fido2.xcframework; path = ../../lib/fido2/Debug/fido2.xcframework; sourceTree = "<group>"; };
+		BCB4DE952E55D0E500AB9F1E /* SecureLogAPI.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:2T9J7M62ML:Thales DIS France SAS"; lastKnownFileType = wrapper.xcframework; name = SecureLogAPI.xcframework; path = ../../lib/SecureLogAPI/SecureLogAPI.xcframework; sourceTree = "<group>"; };
 		F2AC04BF63C3EDDB59D28F7C /* Pods-fido2sample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fido2sample.debug.xcconfig"; path = "Target Support Files/Pods-fido2sample/Pods-fido2sample.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -53,6 +74,8 @@
 			files = (
 				A10D4A1C25DCF798007B36F1 /* libfido2ui.a in Frameworks */,
 				FB51C205EB79A65D5E6DD1ED /* Pods_fido2sample.framework in Frameworks */,
+				BCB4DE962E55D0E500AB9F1E /* SecureLogAPI.xcframework in Frameworks */,
+				BCB4DE922E55CEA400AB9F1E /* fido2.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +85,8 @@
 		3FC5BD9EADB97599384F3F22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCB4DE952E55D0E500AB9F1E /* SecureLogAPI.xcframework */,
+				BCB4DE912E55CEA400AB9F1E /* fido2.xcframework */,
 				A10D4A1B25DCF798007B36F1 /* libfido2ui.a */,
 				9FE6EEECD1F38FE7BD1BD8C5 /* Pods_fido2sample.framework */,
 			);
@@ -161,6 +186,7 @@
 				A1E747D225DCC91700DF2EC8 /* Frameworks */,
 				A1E747D325DCC91700DF2EC8 /* Resources */,
 				DF1A3D7EA3974D79E20726A8 /* [CP] Embed Pods Frameworks */,
+				BCB4DE942E55CEA400AB9F1E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -423,7 +449,7 @@
 				DEVELOPMENT_TEAM = LMY4YJ949Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = fido2sample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,7 +475,7 @@
 				DEVELOPMENT_TEAM = LMY4YJ949Q;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = fido2sample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

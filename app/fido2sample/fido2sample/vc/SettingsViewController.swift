@@ -33,12 +33,14 @@ class SettingsViewController: UIViewController {
     private var secureLogObj : SecureLogArchive!
     
     private var passcodeAuthenticator: TGFPasscodeAuthenticator
-    private let clientConformer = ClientConformer()
+    private let clientConformer: ClientConformer & TGFPasscodeAuthenticatorDelegate = PasscodePadClientConformer()
     private let switchView = UISwitch(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
     
+        setupConformer()
+        
         title = NSLocalizedString("settings_title", comment: "")
         setupTableView()
         
@@ -55,6 +57,27 @@ class SettingsViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: Setup Conformer
+    private func setupConformer() {
+        clientConformer.presentViewClosure = { [weak self] (presentViewController: UIViewController) in
+            guard let self = self else { return }
+            if let navController = self.navigationController,
+               let alert = presentViewController as? UIAlertController {
+                navController.present(alert, animated: true, completion: nil)
+            } else if let navController = self.navigationController {
+                navController.pushViewController(presentViewController, animated: true)
+            } else {
+                self.present(presentViewController, animated: true, completion: nil)
+            }
+        }
+        clientConformer.popViewClosure = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.navigationController?.popToViewController(self, animated: true)
+        }
     }
     
     // MARK: Setup
@@ -151,7 +174,7 @@ extension SettingsViewController: UITableViewDelegate {
                 if let value = alertController.textFields?.first?.text,
                     let intValue = UInt(value) {
                     // Execute to set Minimum passcode Length
-                    TGFPasscodeConfig.setMinimumPasscodeLength(intValue)
+//                    TGFPasscodeConfig.setMinimumPasscodeLength(intValue)
                 }
             }))
             alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .cancel, handler: nil))
@@ -165,7 +188,7 @@ extension SettingsViewController: UITableViewDelegate {
                 if let value = alertController.textFields?.first?.text,
                     let intValue = UInt(value) {
                     // Execute to set Maximum passcode Length
-                    TGFPasscodeConfig.setMaximumPasscodeLength(intValue)
+//                    TGFPasscodeConfig.setMaximumPasscodeLength(intValue)
                 }
             }))
             alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .cancel, handler: nil))
@@ -222,8 +245,7 @@ extension SettingsViewController: UITableViewDelegate {
                                                     preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_reset", comment: ""), style:.destructive, handler: { (action) in
                 // Execute to Reset
-                let client = TGFFido2ClientFactory.client()
-                client.reset()
+                try? TGFFido2Client.reset()
             }))
             alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .cancel, handler: nil))
             navigationController?.present(alertController, animated: true, completion: nil)
