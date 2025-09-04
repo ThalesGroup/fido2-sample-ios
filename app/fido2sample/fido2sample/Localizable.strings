@@ -47,7 +47,6 @@
 "navbar_showlogs_title" = "Show Logs";
 "navbar_hidelogs_title" = "Hide Logs";
 
-
 // MARK: Settings Page
 
 "registeredAuthenticators_section_title" = "Authenticators";
@@ -65,9 +64,17 @@
 "baseLockoutDuration_cell_title" = "Base Lockout Duration";
 "shareSecureLogs_cell_title" = "Share Secure Logs";
 "reset_cell_title" = "Reset";
-
-"minPasscodeLength_subtitle" = "The default value is 6.";
-"maxPasscodeLength_subtitle" = "The default value is 8.";
+"passcodeRules_cell_title" = "Passcode Rules";
+"passcodeSettings_section_title" = "Passcode Settings";
+"passcodeRules_section_title" = "Passcode Rules";
+"minPasscodeLength_subtitle" = "Minimum length of passcode";
+"minPasscodeLength_placeholder" = "Enter minimum length";
+"maxPasscodeLength_subtitle" = "Maximum length of passcode";
+"maxPasscodeLength_placeholder" = "Enter maximum length";
+"passcodeRule_length_title" = "Length Rule";
+"passcodeRule_palindrome_title" = "Palindrome Rule";
+"passcodeRule_series_title" = "Series Rule";
+"passcodeRule_uniform_title" = "Uniform Rule";
 "maxRetryCount_subtitle" = "The default value is 5.";
 "baseLockoutDuration_subtitle" = "The default value is 30s.";
 

@@ -1,4 +1,9 @@
 //
+//
+// Copyright 2021 THALES. All rights reserved.
+//
+
+//
 //  SettingsViewController.swift
 //  fido2sample
 //
@@ -15,9 +20,7 @@ fileprivate let settingsDataSource: [Section] = [
         Row(rowType: .createPasscode, reuseIdentifier: "", inputValue: nil , accessoryType: .disclosureIndicator),
         Row(rowType: .changePasscode, reuseIdentifier: "", inputValue: nil, accessoryType: .disclosureIndicator),
         Row(rowType: .deletePasscode, reuseIdentifier: "", inputValue: nil, accessoryType: .disclosureIndicator),
-        Row(rowType: .disableScramble, reuseIdentifier: "disableScramble_reuseIdentifier", inputValue: nil , accessoryType: .none),
-        Row(rowType: .minPasscodeLength, reuseIdentifier: "", inputValue: NSLocalizedString("minPasscodeLength_subtitle", comment: "") , accessoryType: .none),
-        Row(rowType: .maxPasscodeLength, reuseIdentifier: "", inputValue: NSLocalizedString("maxPasscodeLength_subtitle", comment: "") , accessoryType: .none),
+        Row(rowType: .passcodeRules, reuseIdentifier: "", inputValue: nil, accessoryType: .disclosureIndicator),
         Row(rowType: .maxRetryCount, reuseIdentifier: "", inputValue: NSLocalizedString("maxRetryCount_subtitle", comment: "") , accessoryType: .none),
         Row(rowType: .baseLockoutDuration, reuseIdentifier: "", inputValue: NSLocalizedString("baseLockoutDuration_subtitle", comment: "") , accessoryType: .none),
     ]),
@@ -33,8 +36,7 @@ class SettingsViewController: UIViewController {
     private var secureLogObj : SecureLogArchive!
     
     private var passcodeAuthenticator: TGFPasscodeAuthenticator
-    private let clientConformer = ClientConformer()
-    private let switchView = UISwitch(frame: .zero)
+    private let clientConformer: ClientConformer & TGFPasscodeAuthenticatorDelegate = PasscodePadClientConformer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -129,47 +131,12 @@ extension SettingsViewController: UITableViewDelegate {
         
         let section = dataSource[indexPath.section]
         let row = section.rows[indexPath.row]
-        if row.reuseIdentifier == "disableScramble_reuseIdentifier" {
-            switchView.setOn(true, animated: true)
-            switchView.isEnabled = true
-            switchView.isUserInteractionEnabled = false
-            disableScrambledWithCellDisabled()
-        }
-        
         switch (section.sectionType, row.rowType) {
         
         case (.authenticators, .registeredAuthenticators):
             let authenticatorRegistrationsVC = AuthenticatorRegistrationsViewController()
             navigationController?.pushViewController(authenticatorRegistrationsVC, animated: true)
-            
-        case (.passcodeManagement, .minPasscodeLength):
-            let alertController = UIAlertController(title: NSLocalizedString("minPasscodeLength_cell_title", comment: ""), message: nil, preferredStyle: .alert)
-            alertController.addTextField { (textField) in
-                textField.keyboardType = .numberPad
-            }
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_ok", comment: ""), style: .default, handler: { (action) in
-                if let value = alertController.textFields?.first?.text,
-                    let intValue = UInt(value) {
-                    // Execute to set Minimum passcode Length
-                    TGFPasscodeConfig.setMinimumPasscodeLength(intValue)
-                }
-            }))
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .cancel, handler: nil))
-            present(alertController, animated: true, completion: nil)
-        case (.passcodeManagement, .maxPasscodeLength):
-            let alertController = UIAlertController(title: NSLocalizedString("maxPasscodeLength_cell_title", comment: ""), message: nil, preferredStyle: .alert)
-            alertController.addTextField { (textField) in
-                textField.keyboardType = .numberPad
-            }
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_ok", comment: ""), style: .default, handler: { (action) in
-                if let value = alertController.textFields?.first?.text,
-                    let intValue = UInt(value) {
-                    // Execute to set Maximum passcode Length
-                    TGFPasscodeConfig.setMaximumPasscodeLength(intValue)
-                }
-            }))
-            alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .cancel, handler: nil))
-            present(alertController, animated: true, completion: nil)
+
         case (.passcodeManagement, .maxRetryCount):
             let alertController = UIAlertController(title: NSLocalizedString("maxRetryCount_cell_title", comment: ""), message: nil, preferredStyle: .alert)
             alertController.addTextField { (textField) in
@@ -212,6 +179,12 @@ extension SettingsViewController: UITableViewDelegate {
             passcodeAuthenticator.deletePasscode()
             break
         
+        case (.passcodeManagement, .passcodeRules):
+            // Execute to Passcode Rules
+            let passcodeRulesVC = PasscodeRulesViewController()
+            navigationController?.pushViewController(passcodeRulesVC, animated: true)
+            break
+        
         case (.sdk, .shareSecureLogs):
             // Execute to zip and archieve secure logs to share
             self.shareLogFiles()
@@ -222,8 +195,7 @@ extension SettingsViewController: UITableViewDelegate {
                                                     preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_reset", comment: ""), style:.destructive, handler: { (action) in
                 // Execute to Reset
-                let client = TGFFido2ClientFactory.client()
-                client.reset()
+                try? TGFFido2Client.reset()
             }))
             alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .cancel, handler: nil))
             navigationController?.present(alertController, animated: true, completion: nil)
@@ -258,30 +230,7 @@ extension SettingsViewController: UITableViewDataSource {
         cell.detailTextLabel?.text = row.inputValue ?? ""
         cell.accessoryType = row.accessoryType
 
-        if row.reuseIdentifier == "disableScramble_reuseIdentifier" {
-            switchView.setOn(false, animated: true)
-            switchView.tag = indexPath.row
-            switchView.addTarget(self, action: #selector(self.switchChanged(_:)), for: .valueChanged)
-            cell.accessoryView = switchView
-        }
         return cell
-    }
-    
-    @objc func switchChanged(_ sender: UISwitch) {
-        sender.isEnabled = true
-        sender.isUserInteractionEnabled = false
-        
-        disableScrambledWithCellDisabled()
-    }
-    
-    private func disableScrambledWithCellDisabled() {
-        guard let cell = tableView.cellForRow(at: IndexPath(row: 3, section: SectionType.passcodeManagement.rawValue ) ) else { return }
-        cell.textLabel?.textColor = UIColor.lightGray
-        cell.isUserInteractionEnabled = false
-        cell.textLabel?.isEnabled = false
-        
-        //Execute to disable scramble passcode keyboard
-        TGFPasscodeConfig.disableScrambled()
     }
 }
 
@@ -320,9 +269,7 @@ fileprivate enum RowType: CustomStringConvertible, CaseIterable {
     case createPasscode
     case changePasscode
     case deletePasscode
-    case disableScramble
-    case minPasscodeLength
-    case maxPasscodeLength
+    case passcodeRules
     case maxRetryCount
     case baseLockoutDuration
 
@@ -340,13 +287,8 @@ fileprivate enum RowType: CustomStringConvertible, CaseIterable {
             return NSLocalizedString("changePasscode_cell_title", comment: "")
         case .deletePasscode:
             return NSLocalizedString("deletePasscode_cell_title", comment: "")
-        case .disableScramble:
-            return NSLocalizedString("disableScramble_cell_title", comment: "")
-            
-        case .minPasscodeLength:
-            return NSLocalizedString("minPasscodeLength_cell_title", comment: "")
-        case .maxPasscodeLength:
-            return NSLocalizedString("maxPasscodeLength_cell_title", comment: "")
+        case .passcodeRules:
+            return NSLocalizedString("passcodeRules_cell_title", comment: "")
         case .maxRetryCount:
             return NSLocalizedString("maxRetryCount_cell_title", comment: "")
         case .baseLockoutDuration:
@@ -359,4 +301,3 @@ fileprivate enum RowType: CustomStringConvertible, CaseIterable {
         }
     }
 }
-

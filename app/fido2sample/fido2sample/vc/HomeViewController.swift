@@ -1,4 +1,9 @@
 //
+//
+// Copyright © 2021 THALES. All rights reserved.
+//
+
+//
 //  HomeViewController.swift
 //  fido2sample
 //
@@ -18,7 +23,7 @@ class HomeViewController: UIViewController {
 
     // FIDO2 UI SDK provides a conformer to the necessary delegates of FIDO2 SDK
     // providing integrators with a convenient way of exploring the use-cases available.
-    let clientConformer = ClientConformer()
+    let clientConformer: ClientConformer & TGFPasscodeAuthenticatorDelegate = PasscodePadClientConformer()
     
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +33,19 @@ class HomeViewController: UIViewController {
         navigationItem.title = NSLocalizedString("home_title", comment: "")
         
         view.backgroundColor = UIColor.extBackground
-        let bgColor = UIColor(white: 0.9, alpha: 1.0)
         
+        // Configure register button with #4075a2 color
         registerButton.setTitle(NSLocalizedString("register_button_title", comment: ""), for: .normal)
-        registerButton.setTitleColor(UIColor.black, for: .normal)
-        registerButton.backgroundColor = bgColor
+        registerButton.setTitleColor(UIColor.white, for: .normal)
+        registerButton.backgroundColor = UIColor(red: 64/255.0, green: 117/255.0, blue: 162/255.0, alpha: 1.0) // #4075a2
+        registerButton.layer.cornerRadius = 8
         registerButton.addTarget(self, action: #selector(register(_:)), for: .touchUpInside)
 
+        // Configure authenticate button with #278be3 color
         authenticateButton.setTitle(NSLocalizedString("authenticate_button_title", comment: ""), for: .normal)
-        authenticateButton.setTitleColor(UIColor.black, for: .normal)
-        authenticateButton.backgroundColor = bgColor
+        authenticateButton.setTitleColor(UIColor.white, for: .normal)
+        authenticateButton.backgroundColor = UIColor(red: 39/255.0, green: 139/255.0, blue: 227/255.0, alpha: 1.0) // #278be3
+        authenticateButton.layer.cornerRadius = 8
         authenticateButton.addTarget(self, action: #selector(authenticate(_:)), for: .touchUpInside)
  
         setupLayout()
@@ -53,7 +61,7 @@ class HomeViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateLogs(notification:)), name: Logger.logNotification, object: nil)
     }
-
+    
     private func setupPresentViewClosure() {
         clientConformer.presentViewClosure = { [weak self] (presentViewController: UIViewController) in
             if presentViewController is UIAlertController {
@@ -94,12 +102,15 @@ class HomeViewController: UIViewController {
         textView.text = nil
         
         // Show Alert if no authenticators registered.
-        let registeredAuthenticatorsInfos: [TGFFido2AuthenticatorRegistrationInfo] = TGFFido2ClientFactory.client().authenticatorRegistrations()
-        if registeredAuthenticatorsInfos.isEmpty {
-            self.showAlert(withTitle: NSLocalizedString("alert_error_title", comment: ""), message: NSLocalizedString("authenticate_alert_message_no_registration", comment: ""), okAction: nil)
-            return
+        do {
+            let registeredAuthenticatorsInfos: [TGFFido2AuthenticatorRegistrationInfo] = try TGFFido2ClientFactory.client().authenticatorRegistrations()
+            if registeredAuthenticatorsInfos.isEmpty {
+                self.showAlert(withTitle: NSLocalizedString("alert_error_title", comment: ""), message: NSLocalizedString("authenticate_alert_message_no_registration", comment: ""), okAction: nil)
+                return
+            }
+        } catch {
+            print(error)
         }
-        
         // Execute the Authentication use-case.
   
         // Initialize an instance of the Authentication use-case, providing
@@ -208,36 +219,44 @@ class HomeViewController: UIViewController {
     // MARK: Layout
 
     private func setupLayout() {
-        guard registerButton.translatesAutoresizingMaskIntoConstraints,
-              authenticateButton.translatesAutoresizingMaskIntoConstraints else {
-                return
-        }
-
-        view.addSubview(registerButton)
+        let buttonContainer = UIView()
+        view.addSubview(buttonContainer)
+        buttonContainer.translatesAutoresizingMaskIntoConstraints = false
+        
+        buttonContainer.addSubview(registerButton)
+        buttonContainer.addSubview(authenticateButton)
+        
         registerButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            registerButton.heightAnchor.constraint(equalToConstant: 48),
-            registerButton.topAnchor.constraint(equalTo: view.topAnchor, constant: self.view.frame.size.height / 4),
-            registerButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            registerButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16.0)
-        ])
-
-        view.addSubview(authenticateButton)
+        registerButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
         authenticateButton.translatesAutoresizingMaskIntoConstraints = false
+        authenticateButton.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        
         NSLayoutConstraint.activate([
-            authenticateButton.heightAnchor.constraint(equalTo: registerButton.heightAnchor),
-            authenticateButton.bottomAnchor.constraint(equalTo: view.centerYAnchor, constant: -16.0),
-            authenticateButton.leadingAnchor.constraint(equalTo: registerButton.leadingAnchor),
-            authenticateButton.trailingAnchor.constraint(equalTo: registerButton.trailingAnchor),
+            buttonContainer.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: view.bounds.height * 0.10),
+            buttonContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            buttonContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            buttonContainer.heightAnchor.constraint(equalToConstant: 48)
+        ])
+        
+        NSLayoutConstraint.activate([
+            registerButton.leadingAnchor.constraint(equalTo: buttonContainer.leadingAnchor),
+            registerButton.centerYAnchor.constraint(equalTo: buttonContainer.centerYAnchor),
+            registerButton.widthAnchor.constraint(equalTo: buttonContainer.widthAnchor, multiplier: 0.48),
+            
+            authenticateButton.trailingAnchor.constraint(equalTo: buttonContainer.trailingAnchor),
+            authenticateButton.centerYAnchor.constraint(equalTo: buttonContainer.centerYAnchor),
+            authenticateButton.widthAnchor.constraint(equalTo: buttonContainer.widthAnchor, multiplier: 0.48)
         ])
         
         view.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo:view.layoutMarginsGuide.centerYAnchor),
-            textView.bottomAnchor.constraint(equalTo:view.layoutMarginsGuide.bottomAnchor, constant: -16.0),
-            textView.leadingAnchor.constraint(equalTo:view.layoutMarginsGuide.leadingAnchor),
-            textView.trailingAnchor.constraint(equalTo:view.layoutMarginsGuide.trailingAnchor)
+            // Position the text view below the buttons with some spacing
+            textView.topAnchor.constraint(equalTo: buttonContainer.bottomAnchor, constant: 40),
+            textView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -16.0),
+            textView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            textView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor)
         ])
         textView.layer.borderWidth = 0.5
         textView.layer.borderColor = UIColor.extLabel.cgColor

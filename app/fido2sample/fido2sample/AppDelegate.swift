@@ -1,4 +1,9 @@
 //
+//
+// Copyright © 2021 THALES. All rights reserved.
+//
+
+//
 //  AppDelegate.swift
 //  fido2sample
 //
@@ -16,16 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        //Configure RASP, to crash app in case of hook/debugger/jailbreak detected.
-#if DEBUG
-        TGFRaspUiConfigure(TGF_RASP_TYPE_DEBUGGER ,TGF_RASP_MODE_DISABLE)
-        TGFRaspUiConfigure(TGF_RASP_TYPE_HOOK | TGF_RASP_TYPE_JAILBREAK ,TGF_RASP_MODE_CRASH)
-#else
-        TGFRaspUiConfigure(TGF_RASP_TYPE_DEBUGGER | TGF_RASP_TYPE_HOOK | TGF_RASP_TYPE_JAILBREAK,TGF_RASP_MODE_CRASH)
-#endif
-        
         //Initialise SecureLog, to log necessary retrievable information.
         initializeSecureLog()
+        
+        // config the AppGroups
+        TGFFido2Config.setAppGroup(appgroupIdentifier)
+        
+        // cert pinning
+        setupCertPinning()
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
       
@@ -44,14 +47,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         settingsNVC.tabBarItem.image = #imageLiteral(resourceName: "settings")
         settingsNVC.tabBarItem.title = NSLocalizedString("tabbar_settings_title", comment: "")
         
-        self.window!.rootViewController = tabBarController
+        self.window?.rootViewController = tabBarController
         
-        self.window!.makeKeyAndVisible()
+        self.window?.makeKeyAndVisible()
         
         return true
     }
     
     // MARK: Private Methods
+    
+    private func setupCertPinning() {
+        if let certPath = Bundle.main.path(forResource: ## fill your certificate name ##, ofType: "cer"),
+           let certData = try? Data(contentsOf: URL(fileURLWithPath: certPath)) {
+            TGFFido2Config.setTlsCertificates([certData])
+        }
+    }
     
     private func initializeSecureLog() {
         
@@ -68,4 +78,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
