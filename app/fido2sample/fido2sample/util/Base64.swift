@@ -1,8 +1,6 @@
 //
-//  Base64.swift
-//  fido2sample
 //
-//  Copyright © 2020 Thales Group. All rights reserved.
+// Copyright © 2021-2022 THALES. All rights reserved.
 //
 
 import Foundation

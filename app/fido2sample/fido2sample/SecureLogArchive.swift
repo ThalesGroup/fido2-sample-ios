@@ -1,4 +1,9 @@
 //
+//
+// Copyright © 2021 THALES. All rights reserved.
+//
+
+//
 //  SecureLogArchive.swift
 //  fido2sample
 //

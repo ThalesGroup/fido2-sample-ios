@@ -1,0 +1,10 @@
+//
+//
+// Copyright © 2025 THALES. All rights reserved.
+//
+    
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+CODE_SIGN_ENTITLEMENTS = autofill/autofill.entitlements

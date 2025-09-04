@@ -1,8 +1,6 @@
 //
-//  Authentication.swift
-//  fido2sample
 //
-//  Copyright © 2020 Thales Group. All rights reserved.
+// Copyright © 2021-2022 THALES. All rights reserved.
 //
 
 import UIKit
@@ -11,18 +9,18 @@ import Fido2Ui
 
 class Authentication: NSObject {
     
-    private let clientConformer: ClientConformer
+    private let clientConformer: (ClientConformer & TGFPasscodeAuthenticatorDelegate)
     
     // Set up an instance variable of FIDO2 client
-    private let fido2Client =  TGFFido2ClientFactory.client()
+    private let fido2Client = try? TGFFido2ClientFactory.client()
     
-    init( clientConformer: ClientConformer) {
+    init( clientConformer: (ClientConformer & TGFPasscodeAuthenticatorDelegate)) {
         self.clientConformer = clientConformer
     }
     
     func execute(completion: @escaping (Error?) -> ()) {
 
-        // Fido2 Authentication request json string
+        // Fido2 authentication request json string
         let jsonString = """
         {
           "userVerification" : "required",
@@ -46,18 +44,15 @@ class Authentication: NSObject {
             // As a means of convenience, the FIDO2 UI SDK provides a ClientConformer class which conforms to all necessary delegates of FIDO2 SDK
             /* 2 */
             ## Setup TGFFido2RespondArgsBuilder with UI delegates ##
-
-
-            // Fetch the FIDO2 Authentication response.
+            
+            
+            // Retrieve the FIDO2 Registration response.
             // Handle on error or response
             /* 3 */
-            ## Fetch a FIDO2 response ##
-            
-            
+            ## Retrieve FIDO2 response ##
         } catch let error {
             completion(error)
-            Logger.log(string: "Authentication Error:\n" + error.localizedDescription)
+            Logger.log(string: "Registration Error:\n" + error.localizedDescription)
         }
     }
 }
-

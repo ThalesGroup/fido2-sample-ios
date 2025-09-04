@@ -11,24 +11,33 @@
 // FIDO2 SDK does not support bitcode
 ENABLE_BITCODE = NO
 
-// FIDO2 SDK minimum iOS is 11.0
-IPHONEOS_DEPLOYMENT_TARGET = 11.0
+// FIDO2 SDK minimum iOS is 15.0
+IPHONEOS_DEPLOYMENT_TARGET = 15.0
 
-// The following search paths is based on this folder structure. 
+// The following search paths is based on this folder structure.
 // Please modify accordingly if the structure is different.
-//    ├── app
-//    │   └── fido2sample
-//    └── lib
-//        ├── fido2
-//        │   ├── debug
-//        │   │   ├── fido2
-//        │   │   └── fido2.xcframework
-//        │   └── release
-//        │       ├── fido2
-//        │       └── fido2.xcframework
-//        └── fido2ui
-//            ├── fido2ui
-//            └── fido2ui.xcodeproj
+//  ── app
+//  │   └── fido2sample
+//  └── lib
+//       ├── SecureLogAPI
+//       │   ├── SecureLogAPI.xcframework
+//       │   └── apidoc
+//       ├── fido2
+//       │   ├── Debug
+//       │   │      └── fido2.xcframework
+//       │   │              ├── Info.plist
+//       │   │              ├── _CodeSignature
+//       │   │              ├── ios-arm64
+//       │   │              └── ios-arm64_x86_64-simulator
+//       │   ├── Release
+//       │   │      └── fido2.xcframework
+//       │   │              ├── Info.plist
+//       │   │              ├── _CodeSignature
+//       │   │              ├── ios-arm64
+//       │   │              └── ios-arm64_x86_64-simulator
+//       └── fido2ui
+//           ├── fido2ui
+//           ├── fido2ui.xcodeproj
 
 DEAD_CODE_STRIPPING = YES
 DEPLOYMENT_POSTPROCESSING = YES
@@ -37,5 +46,10 @@ STRIP_INSTALLED_PRODUCT = YES
 STRIP_STYLE = all
 COPY_PHASE_STRIP = YES
 
-OTHER_LDFLAGS = $(inherited) -lfido2
-LIB_ROOT = $(PROJECT_DIR)/../../lib
+OTHER_LDFLAGS = $(inherited) -framework fido2
+
+LIB_PATH = $(PROJECT_DIR)/../../lib
+
+SECURELOG_API_PATH[sdk=iphoneos*] = $(LIB_PATH)/SecureLogAPI/SecureLogAPI.xcframework/ios-arm64
+SECURELOG_API_PATH[sdk=iphonesimulator*] = $(LIB_PATH)/SecureLogAPI/SecureLogAPI.xcframework/ios-arm64_x86_64-simulator
+FRAMEWORK_SEARCH_PATHS = $(inherited) $(SECURELOG_API_PATH)
