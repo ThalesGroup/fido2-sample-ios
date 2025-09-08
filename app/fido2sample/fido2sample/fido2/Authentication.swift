@@ -52,7 +52,7 @@ class Authentication: NSObject {
             ## Retrieve FIDO2 response ##
         } catch let error {
             completion(error)
-            Logger.log(string: "Registration Error:\n" + error.localizedDescription)
+            Logger.log(string: "Authentication Error:\n" + error.localizedDescription)
         }
     }
 }
