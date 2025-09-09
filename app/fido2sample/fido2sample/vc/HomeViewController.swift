@@ -44,7 +44,7 @@ class HomeViewController: UIViewController {
         // Configure authenticate button with #278be3 color
         authenticateButton.setTitle(NSLocalizedString("authenticate_button_title", comment: ""), for: .normal)
         authenticateButton.setTitleColor(UIColor.white, for: .normal)
-        authenticateButton.backgroundColor = UIColor(red: 39/255.0, green: 139/255.0, blue: 227/255.0, alpha: 1.0) // #278be3
+        authenticateButton.backgroundColor = UIColor(red: 64/255.0, green: 117/255.0, blue: 162/255.0, alpha: 1.0) // #4075a2
         authenticateButton.layer.cornerRadius = 8
         authenticateButton.addTarget(self, action: #selector(authenticate(_:)), for: .touchUpInside)
  
