@@ -19,11 +19,32 @@ class Authentication: NSObject {
     }
     
     func execute(completion: @escaping (Error?) -> ()) {
-
+        
+        // Get authenticator registrations to include in allowCredentials
+        let registrations = getAuthenticatorRegistrations()
+        
+        // Build allowCredentials array for the payload
+        var allowCredentialsJson = ""
+        
+        if !registrations.isEmpty {
+            var credentialItems = [String]()
+            
+            for registration in registrations {
+                if let credentialId = registration.credentialId {
+                    let base64Id = Base64.encode(data: credentialId as Data)
+                    credentialItems.append("    {\n      \"type\" : \"public-key\",\n      \"id\" : \"\(base64Id)\"\n    }")
+                }
+            }
+            
+            if !credentialItems.isEmpty {
+                allowCredentialsJson = "\"allowCredentials\" : [\n" + credentialItems.joined(separator: ",\n") + "\n  ],\n"
+            }
+        }
+        
         // Fido2 authentication request json string
         let jsonString = """
         {
-          "userVerification" : "required",
+          \(allowCredentialsJson)"userVerification" : "required",
           "challenge" : "AAABcqFVwBmaMa534c9FKrv7163Penj7",
           "rpId" : "\(rpId)"
         }
@@ -53,6 +74,17 @@ class Authentication: NSObject {
         } catch let error {
             completion(error)
             Logger.log(string: "Authentication Error:\n" + error.localizedDescription)
+        }
+    }
+    
+    // MARK: Helper function
+    // get authenticator registrations
+    private func getAuthenticatorRegistrations() -> [TGFFido2AuthenticatorRegistrationInfo] {
+        do {
+            return try fido2Client?.authenticatorRegistrations() ?? []
+        } catch let error {
+            Logger.log(string: "Error getting authenticator registrations: \(error.localizedDescription)")
+            return []
         }
     }
 }
