@@ -27,6 +27,7 @@ fileprivate let settingsDataSource: [Section] = [
     Section(sectionType: .sdk, rows: [
         Row(rowType: .shareSecureLogs, reuseIdentifier: "", inputValue: nil, accessoryType: .none),
         Row(rowType: .reset, reuseIdentifier: "", inputValue: nil, accessoryType: .none),
+        Row(rowType: .privacyPolicy, reuseIdentifier: "", inputValue: nil, accessoryType: .disclosureIndicator),
     ])
 ]
 
@@ -200,6 +201,10 @@ extension SettingsViewController: UITableViewDelegate {
             alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .cancel, handler: nil))
             navigationController?.present(alertController, animated: true, completion: nil)
             break
+        case (.sdk, .privacyPolicy):
+            guard let url = URL(string: PRIVACY_POLICY_URL) else { return }
+            UIApplication.shared.open(url)
+            break
         default:
             break
         }
@@ -275,6 +280,7 @@ fileprivate enum RowType: CustomStringConvertible, CaseIterable {
 
     case shareSecureLogs
     case reset
+    case privacyPolicy
     
     var description: String {
         switch self {
@@ -298,6 +304,8 @@ fileprivate enum RowType: CustomStringConvertible, CaseIterable {
             return NSLocalizedString("shareSecureLogs_cell_title", comment: "")
         case .reset:
             return NSLocalizedString("reset_cell_title", comment: "")
+        case .privacyPolicy:
+            return NSLocalizedString("privacyPolicy_cell_title", comment: "")
         }
     }
 }

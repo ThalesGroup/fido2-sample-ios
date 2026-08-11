@@ -29,6 +29,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // cert pinning
         setupCertPinning()
+
+        // AAGUID override (optional)
+        // This is only called when the customer needs to use a custom AAGUID value.
+        if let customBiometricAaguid {
+            try? TGFFido2Config.setAuthenticatorAaguid(customBiometricAaguid, forVerifyMethod: .biometric)
+        }
+       
+        if let customPasscodeAaguid {
+            try? TGFFido2Config.setAuthenticatorAaguid(customPasscodeAaguid, forVerifyMethod: .passcode)
+        }
+     
         
         self.window = UIWindow(frame: UIScreen.main.bounds)
       

@@ -6,7 +6,7 @@
         <true/>
         <key>com.apple.security.application-groups</key>
         <array>
-            <string></string> ## fill your appgroup identifier here##
+            <string>//## fill your appgroupIdentifier here ##</string>
         </array>
     </dict>
 </plist>

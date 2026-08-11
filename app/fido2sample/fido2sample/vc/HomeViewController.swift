@@ -62,6 +62,15 @@ class HomeViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateLogs(notification:)), name: Logger.logNotification, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // EULA agreement
+        if !SamplePersistence.isEulaAccepted {
+            showEulaPrompt()
+        }
+    }
+
     private func setupPresentViewClosure() {
         clientConformer.presentViewClosure = { [weak self] (presentViewController: UIViewController) in
             if presentViewController is UIAlertController {
@@ -203,6 +212,24 @@ class HomeViewController: UIViewController {
                 self?.showAlert(withTitle: NSLocalizedString("register_alert_title", comment: ""), message: NSLocalizedString("register_alert_message", comment: ""), okAction: nil)
             }
         }
+    }
+    
+    
+    private func showEulaPrompt() {
+        let alertController = UIAlertController(title: NSLocalizedString("eula_title", comment: ""),
+                                                message: NSLocalizedString("eula_message", comment: ""),
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("alert_cancel", comment: ""), style: .destructive) { _ in
+            fatalError()
+        })
+        alertController.addAction(UIAlertAction(title: NSLocalizedString("eula_proceed", comment: ""), style: .default) { _ in
+            guard let url = URL(string: EULA_URL) else { return }
+            UIApplication.shared.open(url, options: [:]) { _ in
+                SamplePersistence.setEulaAccepted(true)
+            }
+        })
+                                  
+        present(alertController, animated: true, completion: nil)
     }
 
     // MARK: Convenience Methods
