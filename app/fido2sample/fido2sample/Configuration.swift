@@ -25,4 +25,11 @@ let rpId: String = ## fill your rp domain here ##
 // 
 let appgroupIdentifier: String = ## fill your appgroupIdentifier here ##
 
+// Custom AAGUID override value for biometric and passcode authenticators.
+let customBiometricAaguid: String? = nil
+let customPasscodeAaguid: String? = nil
 
+// Fido2 EULA URL
+let EULA_URL = "https://cpl.thalesgroup.com/legal"
+// Fido2 Privacy Policy URL
+let PRIVACY_POLICY_URL = "https://docs-cybersec.thalesgroup.com/bundle/latest-idcloud-fido/page/docs/tnc/mobile/privacy-policy-idcloud-fido-sample.html"

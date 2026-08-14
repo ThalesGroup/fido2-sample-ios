@@ -5,39 +5,17 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
-
-#include "../Pods/Target Support Files/Pods-fido2sample/Pods-fido2sample.release.xcconfig"
         
 // FIDO2 SDK does not support bitcode
 ENABLE_BITCODE = NO
 
-// FIDO2 SDK minimum iOS is 15.0
-IPHONEOS_DEPLOYMENT_TARGET = 15.0
+// FIDO2 SDK minimum iOS is 16.0
+IPHONEOS_DEPLOYMENT_TARGET = 16.0
 
-// The following search paths is based on this folder structure.
+// The following search paths is based on this folder structure. 
 // Please modify accordingly if the structure is different.
 //  ── app
-//  │   └── fido2sample
-//  └── lib
-//       ├── SecureLogAPI
-//       │   ├── SecureLogAPI.xcframework
-//       │   └── apidoc
-//       ├── fido2
-//       │   ├── Debug
-//       │   │      └── fido2.xcframework
-//       │   │              ├── Info.plist
-//       │   │              ├── _CodeSignature
-//       │   │              ├── ios-arm64
-//       │   │              └── ios-arm64_x86_64-simulator
-//       │   ├── Release
-//       │   │      └── fido2.xcframework
-//       │   │              ├── Info.plist
-//       │   │              ├── _CodeSignature
-//       │   │              ├── ios-arm64
-//       │   │              └── ios-arm64_x86_64-simulator
-//       └── fido2ui
-//           ├── fido2ui
-//           ├── fido2ui.xcodeproj
+//      └── fido2sample
 
 DEAD_CODE_STRIPPING = YES
 DEPLOYMENT_POSTPROCESSING = YES
@@ -47,9 +25,3 @@ STRIP_STYLE = all
 COPY_PHASE_STRIP = YES
 
 OTHER_LDFLAGS = $(inherited) -framework fido2
-
-LIB_PATH = $(PROJECT_DIR)/../../lib
-
-SECURELOG_API_PATH[sdk=iphoneos*] = $(LIB_PATH)/SecureLogAPI/SecureLogAPI.xcframework/ios-arm64
-SECURELOG_API_PATH[sdk=iphonesimulator*] = $(LIB_PATH)/SecureLogAPI/SecureLogAPI.xcframework/ios-arm64_x86_64-simulator
-FRAMEWORK_SEARCH_PATHS = $(inherited) $(SECURELOG_API_PATH)

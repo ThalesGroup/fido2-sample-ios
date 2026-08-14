@@ -65,15 +65,18 @@ class Registration: NSObject {
             // As a means of convenience, the FIDO2 UI SDK provides a ClientConformer class which conforms to all necessary delegates of FIDO2 SDK
             /* 2 */
             ## Setup TGFFido2RespondArgsBuilder with UI delegates ##
-            
+
             // Retrieve the FIDO2 Registration response.
             // Handle on error or response
+            
             /* 3 */
             ## Retrieve FIDO2 response ##
             
         } catch let error {
-            completion(error)
-            Logger.log(string: "Registration Error:\n" + error.localizedDescription)
+            DispatchQueue.main.async {
+                completion(error)
+                Logger.log(string: "Registration Error:\n" + error.localizedDescription)
+            }
         }
     }
 }

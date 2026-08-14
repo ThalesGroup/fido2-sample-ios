@@ -66,14 +66,16 @@ class Authentication: NSObject {
             /* 2 */
             ## Setup TGFFido2RespondArgsBuilder with UI delegates ##
             
-            
             // Retrieve the FIDO2 Registration response.
             // Handle on error or response
             /* 3 */
             ## Retrieve FIDO2 response ##
+            
         } catch let error {
-            completion(error)
-            Logger.log(string: "Authentication Error:\n" + error.localizedDescription)
+            DispatchQueue.main.async {
+                completion(error)
+                Logger.log(string: "Authentication Error:\n" + error.localizedDescription)
+            }
         }
     }
     
@@ -87,4 +89,5 @@ class Authentication: NSObject {
             return []
         }
     }
+    
 }

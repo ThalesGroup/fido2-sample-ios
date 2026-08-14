@@ -9,7 +9,8 @@
 //
 
 import Foundation
-import SSZipArchive
+import ZipArchive
+import UIKit
 
 class SecureLogArchive : NSObject {
     

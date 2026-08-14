@@ -47,6 +47,13 @@
 "navbar_showlogs_title" = "Show Logs";
 "navbar_hidelogs_title" = "Hide Logs";
 
+// MARK: EULA
+
+"eula_title" = "EULA";
+"eula_message" = "By continuing, you agree that you have read and accepted the EULA.";
+"eula_proceed" = "Take me there";
+
+
 // MARK: Settings Page
 
 "registeredAuthenticators_section_title" = "Authenticators";
@@ -64,6 +71,7 @@
 "baseLockoutDuration_cell_title" = "Base Lockout Duration";
 "shareSecureLogs_cell_title" = "Share Secure Logs";
 "reset_cell_title" = "Reset";
+"privacyPolicy_cell_title" = "Privacy Policy";
 "passcodeRules_cell_title" = "Passcode Rules";
 "passcodeSettings_section_title" = "Passcode Settings";
 "passcodeRules_section_title" = "Passcode Rules";
